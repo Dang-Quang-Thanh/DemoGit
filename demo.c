@@ -17,4 +17,6 @@ struct ListNode* removeElements(struct ListNode* head, int val) {
     }
     return head;
 }
-//add a comment
+int main(){
+    return 0;
+}

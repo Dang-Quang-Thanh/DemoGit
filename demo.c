@@ -1,40 +1,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 
- struct node {
+struct ListNode {
     int val;
-    struct node* next;
-}; typedef struct node node;
+    struct ListNode *next;
+};
 
-node *head;
-
-node *createnode(int value){
-    node *newnode = (node*)malloc(sizeof(node));
-    newnode->val = value;
-    newnode->next = NULL;
-    return newnode;
-}
-
-void Insert(int value){
-    node *newnode = createnode(value);
-    newnode->next = head;
-    head = newnode;
-}
-
-void printlist(){
-    node *print = head;
-    while(print != NULL){
-        printf("%d ", print->val);
-        print = print->next;
+struct ListNode* removeElements(struct ListNode* head, int val) {
+    struct ListNode* p = head;
+    struct ListNode* prev = NULL;
+    while(p != NULL && p->next != NULL) {
+        if(p->val == val) {
+            prev->next = p;
+            p->next = prev->next;
+        }
     }
-    printf("NULL\n");
+    return head;
 }
-
-int main(){
-    head = NULL;
-    for(int i = 1; i <= 5; i++){
-        Insert(i);
-    }
-    printlist();
-}
-
+//add a comment
